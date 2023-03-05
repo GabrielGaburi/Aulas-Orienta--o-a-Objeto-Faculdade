@@ -1,0 +1,172 @@
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Main {
+	Scanner sc = new Scanner(System.in);
+		String ra;
+		String nome;
+		String disciplina;
+		double nota1;
+		double nota2;
+		double nota3;
+		double nota4;
+		double media;
+		int faltaPrimeiroBimestre;
+		int faltaSegundoBimestre;
+		int faltaTerceiroBimestre;
+		int faltaQuartoBimestre;
+		
+		public void entradaAlunos() {
+		
+		
+		System.out.println("Digite o RA do aluno");
+		ra = sc.nextLine();
+		System.out.println("Digite o nome do aluno");
+		nome = sc.nextLine();
+		System.out.println("Digite a disciplina do aluno");
+		disciplina = sc.nextLine();
+	}
+	
+	public void entradaFaltas() {
+		System.out.println("Digite as faltas do primeiro bimestre");
+		faltaPrimeiroBimestre = sc.nextInt();
+		
+		while (faltaPrimeiroBimestre < 0 || faltaPrimeiroBimestre > 5) {
+			System.out.println("Erro, digite as faltas novamente");
+			faltaPrimeiroBimestre = sc.nextInt();
+		}
+		
+		System.out.println("Digite as faltas do segundo bimestre");
+		faltaSegundoBimestre = sc.nextInt();
+		
+		while (faltaSegundoBimestre < 0 || faltaSegundoBimestre > 5) {
+			System.out.println("Erro, digite as faltas novamente");
+			faltaSegundoBimestre = sc.nextInt();
+		}
+		
+		System.out.println("Digite as faltas do terceiro bimestre");
+		faltaTerceiroBimestre = sc.nextInt();
+		
+		while (faltaTerceiroBimestre < 0 || faltaTerceiroBimestre > 5) {
+			System.out.println("Erro, digite as faltas novamente");
+			faltaTerceiroBimestre = sc.nextInt();
+		}
+		
+		System.out.println("Digite as faltas do quarto bimestre");
+		faltaQuartoBimestre = sc.nextInt();
+		
+		while (faltaQuartoBimestre < 0 || faltaQuartoBimestre > 5) {
+			System.out.println("Erro, digite as faltas novamente");
+			faltaQuartoBimestre = sc.nextInt();
+		}
+	}
+		public void entradaNotas() {
+		System.out.println("Digite a primeira nota");
+		nota1 = sc.nextDouble();
+		
+		while (nota1 < 0 || nota1 > 10) {
+			System.out.println("Nota invalida, digite novamente");
+			System.out.println("Digite a primeir nota");
+			nota1 = sc.nextDouble();
+		}
+		
+		System.out.println("Digite a segunda nota");
+		nota2 = sc.nextDouble();
+		while ( nota2 < 0 || nota2 > 10) {
+			System.out.println("Nota invalida, digite novamente");
+			System.out.println("Digite a segunda nota");
+			nota2 = sc.nextDouble();
+		}
+		
+		System.out.println("Digite a terceira nota");
+		nota3 = sc.nextDouble();
+		
+		while ( nota3 < 0 || nota3 > 10) {
+			System.out.println("Nota invalida, digite novamente");
+			System.out.println("Digite a terceira nota");
+			nota3 = sc.nextDouble();
+		}
+		
+		System.out.println("Digite a quarta nota");
+		nota4 = sc.nextDouble();
+		
+		while ( nota4 < 0 || nota4 > 10) {
+			System.out.println("Nota invalida, digite novamente");
+			System.out.println("Digite a quarta nota");
+			nota3 = sc.nextDouble();
+		}
+		
+		
+		sc.close();
+		
+	}
+
+	public double media() {
+		
+		return (nota1 + nota2 + nota3 + nota4) / 4;
+		
+	}
+	
+	public int totalFaltas() {
+		return faltaPrimeiroBimestre + faltaSegundoBimestre + faltaTerceiroBimestre + faltaQuartoBimestre;
+		
+	}
+	
+	public void imprimirAlunos() {
+		if (totalFaltas() == 0 && media() >= 5) {
+		System.out.println("O aluno " + nome + " RA: " + ra + " foi aprovado com nota " + String.format("%.2f", media()) + " com frequência maxíma na disciplina "  + disciplina);
+		}
+		else if (totalFaltas() == 0 && media() < 5) {
+			System.out.println("O aluno " + nome + " RA: " + ra + " foi reprovado com nota " + String.format("%.2f", media()) + " com frequência maxíma na disciplina "  + disciplina);
+		}
+		else if (totalFaltas() <= 4 && media() >= 5) {
+			System.out.println("O aluno " + nome + " RA: " + ra + " foi aprovado com nota " + String.format("%.2f", media()) + " com boa frequência  na disciplina "  + disciplina);
+		}
+		else if (totalFaltas() <= 4 && media () < 5) {
+			System.out.println("O aluno " + nome + " RA: " + ra + " foi reprovado com nota " + String.format("%.2f", media()) + " com boa frequência  na disciplina "  + disciplina);
+		}
+		else if (totalFaltas() <= 8 && media() >= 5) {
+			System.out.println("O aluno " + nome + " RA: " + ra + " foi aprovado com nota " + String.format("%.2f", media()) + " com frequência regular na disciplina "  + disciplina);
+		}
+		else if (totalFaltas() <= 8 && media () < 5) {
+			System.out.println("O aluno " + nome + " RA: " + ra + " foi reprovado com nota " + String.format("%.2f", media()) + " frequência regular na disciplina "  + disciplina);
+		}
+		else if (totalFaltas() <= 12 && media() >= 5) {
+			System.out.println("O aluno " + nome + " RA: " + ra + " foi aprovado com nota " + String.format("%.2f", media()) + " com frequência média  na disciplina "  + disciplina);
+		}
+		else if (totalFaltas() <= 12 && media () < 5) {
+			System.out.println("O aluno " + nome + " RA: " + ra + " foi reprovado com nota " + String.format("%.2f", media()) + " com frequência média na disciplina "  + disciplina);
+		}
+		else if (totalFaltas() <= 16 && media() >= 5) {
+			System.out.println("O aluno " + nome + " RA: " + ra + " foi aprovado com nota " + String.format("%.2f", media()) + " com frequência ruim  na disciplina "  + disciplina);
+		}
+		else if (totalFaltas() <= 16 && media () < 5) {
+			System.out.println("O aluno " + nome + " RA: " + ra + " foi reprovado com nota " + String.format("%.2f", media()) + " com frequência ruim na disciplina "  + disciplina);
+		}
+		else if (totalFaltas() < 20 && media() >= 5) {
+			System.out.println("O aluno " + nome + " RA: " + ra + " foi aprovado com nota " + String.format("%.2f", media()) + " com péssima frequência na disciplina "  + disciplina);
+		}
+		else {
+			System.out.println("O aluno " + nome + " RA: " + ra + " foi reprovado com nota " + String.format("%.2f", media()) + " com péssima frequência na disciplina "  + disciplina);
+		}
+		
+		
+	}
+	
+	 public static void main(String[] Largs) {
+		Locale.setDefault(Locale.US);
+		Main nota = new Main();
+		
+		nota.entradaAlunos();
+	
+		nota.entradaFaltas();
+		if(nota.totalFaltas() < 20) {
+			nota.entradaNotas();
+			nota.imprimirAlunos();
+		}
+		else {
+			System.out.println("Aluno reprovado por faltas");
+		}
+		
+	}
+	}
