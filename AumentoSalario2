@@ -1,0 +1,55 @@
+# Aulas-Orienta--o-a-Objeto-Faculdade
+algumas atividades do professor Célio
+package Program;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Application {
+	Scanner sc = new Scanner(System.in);
+	
+	String nome;
+	double salarioBruto;
+	double taxas;
+	double aumento;
+	double salarioLiquido;
+	double salarioAumentado;
+	
+	public void dados() {
+		System.out.println("Digite o nome do funcionário");
+		nome = sc.nextLine();
+		System.out.println("Digite o salário bruto do funcionário");
+		salarioBruto = sc.nextDouble();
+		System.out.println("Digite a taxa a ser descontado");
+		taxas = sc.nextDouble();
+	}
+	
+	public double salarioLiquido() {
+		return salarioBruto - taxas;
+	}
+	public void salarioAtual() {
+		System.out.println("O funcionário " + nome + " recebe atualmente " + String.format("%.2f",salarioLiquido()));
+	}
+	public void aumentado() {
+		System.out.println("Digite o valor em porcentagem a ser aumentado");
+		aumento = sc.nextDouble();
+	}
+	public double salarioAumentado() {
+		return (salarioBruto * aumento) + salarioBruto - taxas;
+	}
+	public void salarioTotal() {
+		System.out.println("O novo salário do funcionario " + nome + " Vai ser " + String.format("%.2f", salarioAumentado()));
+	}
+	public static void main(String[] args) {
+		Locale.setDefault(new Locale("en", "US"));
+		Application calc = new Application();
+		calc.dados();
+		calc.salarioLiquido();
+		calc.salarioAtual();
+		System.out.println();
+		calc.aumentado();
+		calc.salarioAumentado();
+		calc.salarioTotal();
+	}
+
+}
