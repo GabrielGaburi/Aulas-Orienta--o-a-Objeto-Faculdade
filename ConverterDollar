@@ -1,0 +1,39 @@
+package Program;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Application {
+	Scanner sc = new Scanner(System.in);
+	
+	double valorDolar;
+	double valorComprado;
+	double iof;
+	double iofReais;
+	
+	
+	public void entrada() {
+		System.out.println("Digite a cotação do dólar hoje");
+		valorDolar = sc.nextDouble();
+		System.out.println("Digite o valor a ser comprado em Dólar");
+		valorComprado = sc.nextDouble();					
+	}
+	
+	public double valorReais() {
+		iofReais = valorComprado * valorDolar * iof;
+		return valorDolar * valorComprado + iofReais;
+	}
+	
+	public void saida() {
+		System.out.println("O valor a ser pago em reais será de " + String.format("%.2f", valorReais()));
+	}
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Application compra = new Application();
+		compra.iof = 0.06;
+		compra.entrada();
+		compra.valorReais();
+		compra.saida();
+	}
+
+}
