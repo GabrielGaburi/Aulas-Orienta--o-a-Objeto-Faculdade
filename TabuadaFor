@@ -1,0 +1,32 @@
+# Aulas-Orienta--o-a-Objeto-Faculdade
+algumas atividades do professor Célio
+
+package Program;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Application {
+	
+	int numeroEscolhido;
+	static int i;
+	
+	public void tabuada() {
+		for(i = 0; i <=10; i++) {
+			System.out.println(numeroEscolhido + " X " + i + " = " + numeroEscolhido * i);
+			
+		}
+	}
+	
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner (System.in);
+		Application calc = new Application();
+		
+		System.out.println("Escolha um número");
+		calc.numeroEscolhido = sc.nextInt();
+		calc.tabuada();
+
+	}
+
+}
